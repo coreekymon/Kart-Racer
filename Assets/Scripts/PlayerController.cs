@@ -74,9 +74,9 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButton("Fire1"))
                 {
                     speed = speed + .01f;
-                    if (speed > 1.2)
+                    if (speed > 2f)
                     {
-                        speed = 1.2f;
+                        speed = 2f;
                     }
                 }
                 if (!Input.GetButton("Fire1"))
