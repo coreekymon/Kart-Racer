@@ -19,14 +19,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, -Vector3.up, .2f);
+        hits = Physics.RaycastAll(transform.position, -Vector3.up, 1f);
         for (int i = 0; i < hits.Length; i++)
         {
             grounded = true;
             RaycastHit hit = hits[i];
             if (hit.collider.gameObject.CompareTag("roughground"))
             {
-                Debug.Log(hits[i]);
                 roughground = true;
             }
             else
