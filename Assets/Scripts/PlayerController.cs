@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0f;
-    public float maxspeed = 3f;
     private float turn = 0f;
     public Rigidbody rb;
     public bool grounded = false;
@@ -19,7 +18,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, -Vector3.up, .2f);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            grounded = true;
+            RaycastHit hit = hits[i];
+            if (hit.collider.gameObject.CompareTag("roughground"))
+            {
+                roughground = true;
+            }
+            else
+            {
+                roughground = false;
+            }
+        }
+        if (hits.Length == 0)
+        {
+            grounded = false;
+        }
+
+
         if (grounded == true)
         {
             turn = Input.GetAxis("Horizontal");
@@ -27,20 +46,20 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetButton("Fire1"))
                 {
-                    speed = speed + .02f;
-                    if (speed > maxspeed/3)
+                    speed = speed + .01f;
+                    if (speed > .6f)
                     {
-                        speed = maxspeed/3;
+                        speed = .6f;
                     }
                 }
                 if (!Input.GetButton("Fire1"))
                 {
 
-                    if (speed > .02)
+                    if (speed > .01)
                     {
-                        speed = speed - .02f;
+                        speed = speed - .01f;
                     }
-                    if (speed >= -.01f && speed <= .02f)
+                    if (speed >= -.01f && speed <= .01f)
                     {
                         speed = 0;
                     }
@@ -54,20 +73,20 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetButton("Fire1"))
                 {
-                    speed = speed + .02f;
-                    if (speed > maxspeed)
+                    speed = speed + .01f;
+                    if (speed > 1.2)
                     {
-                        speed = maxspeed;
+                        speed = 1.2f;
                     }
                 }
                 if (!Input.GetButton("Fire1"))
                 {
 
-                    if (speed > .02)
+                    if (speed > .01)
                     {
-                        speed = speed - .02f;
+                        speed = speed - .01f;
                     }
-                    if (speed >= -.01f && speed <= .02f)
+                    if (speed >= -.01f && speed <= .01f)
                     {
                         speed = 0;
                     }
@@ -80,9 +99,9 @@ public class PlayerController : MonoBehaviour
             if (Input.GetAxis("Vertical") < 0)
             {
                 speed = speed - .02f;
-                if (speed < -1f)
+                if (speed < -.6f)
                 {
-                    speed = -1f;
+                    speed = -.6f;
                 }
             }
         }
@@ -104,52 +123,19 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(transform.position + transform.forward * speed);
         Quaternion rotate = Quaternion.Euler(0f, turn * 45f * Time.deltaTime, 0f);
         rb.MoveRotation(rb.rotation * rotate);
-        if(Physics.Raycast(transform.position, -Vector3.up, .5f))
-        {
-            grounded = true;
-        }
-        else
-        {
-            grounded = false;
-        }
-        /*RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, -Vector3.up, .3f);
-        for (int i = 0; i < hits.Length; i++)
-        {
-            grounded = true;
-            RaycastHit hit = hits[i];
-            if (hit.collider.gameObject.CompareTag("roughground"))
-            {
-                roughground = true;
-            }
-            else
-            {
-                roughground = false;
-            }
-        }
-        if (hits.Length == 0)
-        {
-            grounded = false;
-        }*/
-
-
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("roughground"))
+        if (collision.gameObject.CompareTag("ground"))
         {
-            roughground = true;
-        }
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            speed = -speed/2;
+            grounded = true;
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("roughground"))
+        if (collision.gameObject.CompareTag("ground"))
         {
-            roughground = false;
+            grounded = false;
         }
-    }
+    }*/
 }
