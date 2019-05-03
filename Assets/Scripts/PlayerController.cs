@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, -Vector3.up, 1f);
+        hits = Physics.RaycastAll(transform.position, -Vector3.up, .2f);
         for (int i = 0; i < hits.Length; i++)
         {
             grounded = true;
