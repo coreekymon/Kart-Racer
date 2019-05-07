@@ -152,4 +152,8 @@ public class PlayerController : MonoBehaviour
             roughground = false;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Checkpoint");
+    }
 }
