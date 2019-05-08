@@ -144,6 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             speed = -speed/2;
         }
+      
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -154,6 +155,10 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Checkpoint");
+        if(other.gameObject.CompareTag("Boost Item"))
+        {
+            other.gameObject.SetActive(false);
+        }
+     //   Debug.Log("Checkpoint");
     }
 }
