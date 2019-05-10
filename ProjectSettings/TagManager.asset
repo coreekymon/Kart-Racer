@@ -8,6 +8,7 @@ TagManager:
   - ground
   - roughground
   - Boost Item
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

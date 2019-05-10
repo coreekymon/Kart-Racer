@@ -6,11 +6,10 @@ public class cp1 : MonoBehaviour
 {
     public checkpoints gm;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("hit");
             gm.SetCheckpoint(0);
             gm.DebugCheck(0);
         }
