@@ -10,7 +10,7 @@ public class checkpoints : MonoBehaviour
     void Start()
     {
         int i = 0;
-        while (i < 10)
+        while (i < 11)
         {
             checkpoint[i] = false;
             Debug.Log(checkpoint[i]);
@@ -37,6 +37,7 @@ public class checkpoints : MonoBehaviour
         for (int i = 0; i < 11; i++)
         {
             checkpoint[i] = false;
+            Debug.Log(checkpoint[i]);
         }
     }
     public void DebugCheck(int b)
