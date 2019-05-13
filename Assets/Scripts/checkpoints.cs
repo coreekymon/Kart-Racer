@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class checkpoints : MonoBehaviour
 {
-    private bool[] checkpoint = new bool[11];
+    public bool[] checkpoint = new bool[11];
     public int playerlap = 1;
     // Start is called before the first frame update
     void Start()
@@ -13,7 +13,7 @@ public class checkpoints : MonoBehaviour
         while (i < 11)
         {
             checkpoint[i] = false;
-            Debug.Log(checkpoint[i]);
+            //Debug.Log(checkpoint[i]);
             i = i + 1;
         }
         /*for(int i = 0; i < 11; i++)
@@ -26,7 +26,7 @@ public class checkpoints : MonoBehaviour
     public void SetCheckpoint(int a)
     {
         checkpoint[a] = true;
-        Debug.Log("Set Checkpoint");
+        //Debug.Log("Set Checkpoint");
     }
     public void Nextlap()
     {
@@ -37,7 +37,7 @@ public class checkpoints : MonoBehaviour
         for (int i = 0; i < 11; i++)
         {
             checkpoint[i] = false;
-            Debug.Log(checkpoint[i]);
+            //Debug.Log(checkpoint[i]);
         }
     }
     public void DebugCheck(int b)

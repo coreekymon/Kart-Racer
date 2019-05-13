@@ -10,16 +10,25 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public bool grounded = false;
     public bool roughground = false;
+    public Vector3 posReset;
+    public Quaternion rotReset;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        posReset = transform.position;
+        rotReset = transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire2"))
+        {
+            speed = 0;
+            transform.position = posReset + new Vector3(0,10,0);
+            transform.rotation = rotReset;
+        }
         if (grounded == true)
         {
             turn = Input.GetAxis("Horizontal");
@@ -104,7 +113,7 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(transform.position + transform.forward * speed);
         Quaternion rotate = Quaternion.Euler(0f, turn * 45f * Time.deltaTime, 0f);
         rb.MoveRotation(rb.rotation * rotate);
-        if(Physics.Raycast(transform.position, -Vector3.up, .5f))
+        if(Physics.Raycast(transform.position, -Vector3.up, .8f))
         {
             grounded = true;
         }
@@ -112,27 +121,6 @@ public class PlayerController : MonoBehaviour
         {
             grounded = false;
         }
-        /*RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, -Vector3.up, .3f);
-        for (int i = 0; i < hits.Length; i++)
-        {
-            grounded = true;
-            RaycastHit hit = hits[i];
-            if (hit.collider.gameObject.CompareTag("roughground"))
-            {
-                roughground = true;
-            }
-            else
-            {
-                roughground = false;
-            }
-        }
-        if (hits.Length == 0)
-        {
-            grounded = false;
-        }*/
-
-
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -158,6 +146,11 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Boost Item"))
         {
             other.gameObject.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            posReset = other.gameObject.transform.position;
+            rotReset = other.gameObject.transform.rotation;
         }
      //   Debug.Log("Checkpoint");
     }
