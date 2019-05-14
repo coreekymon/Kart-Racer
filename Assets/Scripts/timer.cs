@@ -45,7 +45,14 @@ public class timer : MonoBehaviour
             {
                 lapOneMilliseconds = 0;
             }
-            lapOne.text = "Lap 1: " + lapOneMinutes + ":" + lapOneSeconds + ":" + lapOneMilliseconds;
+            if (lapOneSeconds < 10)
+            {
+                lapOne.text = "Lap 1: " + lapOneMinutes + ":0" + lapOneSeconds + ":" + lapOneMilliseconds;
+            }
+            else
+            {
+                lapOne.text = "Lap 1: " + lapOneMinutes + ":" + lapOneSeconds + ":" + lapOneMilliseconds;
+            }
         }
         if (gm.playerlap == 2)
         {
@@ -65,7 +72,14 @@ public class timer : MonoBehaviour
             {
                 lapTwoMilliseconds = 0;
             }
-            lapTwo.text = "Lap 2: " + lapTwoMinutes + ":" + lapTwoSeconds + ":" + lapTwoMilliseconds;
+            if (lapTwoSeconds < 10)
+            {
+                lapTwo.text = "Lap 2: " + lapTwoMinutes + ":0" + lapTwoSeconds + ":" + lapTwoMilliseconds;
+            }
+            else
+            {
+                lapTwo.text = "Lap 2: " + lapTwoMinutes + ":" + lapTwoSeconds + ":" + lapTwoMilliseconds;
+            }
         }
         if (gm.playerlap == 3)
         {
@@ -85,7 +99,14 @@ public class timer : MonoBehaviour
             {
                 lapThreeMilliseconds = 0;
             }
-            lapThree.text = "Lap 3: " + lapThreeMinutes + ":" + lapThreeSeconds + ":" + lapThreeMilliseconds;
+            if (lapThreeSeconds < 10)
+            {
+                lapThree.text = "Lap 3: " + lapThreeMinutes + ":0" + lapThreeSeconds + ":" + lapThreeMilliseconds;
+            }
+            else
+            {
+                lapThree.text = "Lap 3: " + lapThreeMinutes + ":" + lapThreeSeconds + ":" + lapThreeMilliseconds;
+            }
         }
         if(gm.playerlap > 3)
         {
