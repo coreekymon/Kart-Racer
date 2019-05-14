@@ -102,11 +102,19 @@ public class timer : MonoBehaviour
                 finalMinutes = finalMinutes + 1;
                 finalSeconds = finalSeconds - 60;
             }
-            if (finalSeconds < 10)
+            if (finalSeconds < 10 && finalMilliseconds < 10)
+            {
+                finalTime.text = "Final Time:" + finalMinutes + ":0" + finalSeconds + ":0" + finalMilliseconds;
+            }
+            if (finalSeconds >= 10 && finalMilliseconds < 10)
+            {
+                finalTime.text = "Final Time:" + finalMinutes + ":" + finalSeconds + ":0" + finalMilliseconds;
+            }
+            if (finalSeconds < 10 && finalMilliseconds >= 10)
             {
                 finalTime.text = "Final Time:" + finalMinutes + ":0" + finalSeconds + ":" + finalMilliseconds;
             }
-            else
+            if (finalSeconds >= 10 && finalMilliseconds >= 10)
             {
                 finalTime.text = "Final Time:" + finalMinutes + ":" + finalSeconds + ":" + finalMilliseconds;
             }
