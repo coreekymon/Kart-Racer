@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool roughground = false;
     public Vector3 posReset;
     public Quaternion rotReset;
+    public bool controlEnabled = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,85 +24,105 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (controlEnabled)
         {
-            speed = 0;
-            transform.position = posReset + new Vector3(0,10,0);
-            transform.rotation = rotReset;
-        }
-        if (grounded == true)
-        {
-            turn = Input.GetAxis("Horizontal");
-            if (roughground == true)
+            if (Input.GetButtonDown("Fire2"))
             {
-                if (Input.GetButton("Fire1"))
+                speed = 0;
+                turn = 0;
+                transform.position = posReset + new Vector3(0, 10, 0);
+                transform.rotation = rotReset;
+            }
+            if (grounded == true)
+            {
+                turn = Input.GetAxis("Horizontal");
+                if (roughground == true)
                 {
-                    speed = speed + .02f;
-                    if (speed > maxspeed/3)
+                    if (Input.GetButton("Fire1"))
                     {
-                        speed = maxspeed/3;
+                        speed = speed + .02f;
+                        if (speed > maxspeed / 3)
+                        {
+                            speed = maxspeed / 3;
+                        }
                     }
-                }
-                if (!Input.GetButton("Fire1"))
-                {
+                    if (!Input.GetButton("Fire1"))
+                    {
 
-                    if (speed > .02)
-                    {
-                        speed = speed - .02f;
-                    }
-                    if (speed >= -.01f && speed <= .02f)
-                    {
-                        speed = 0;
-                    }
-                    if (speed < -.01f)
-                    {
-                        speed = speed + .01f;
-                    }
-                }
-            }
-            else
-            {
-                if (Input.GetButton("Fire1"))
-                {
-                    speed = speed + .02f;
-                    if (speed > maxspeed)
-                    {
-                        speed = maxspeed;
+                        if (speed > .02)
+                        {
+                            speed = speed - .02f;
+                        }
+                        if (speed >= -.01f && speed <= .02f)
+                        {
+                            speed = 0;
+                        }
+                        if (speed < -.01f)
+                        {
+                            speed = speed + .01f;
+                        }
                     }
                 }
-                if (!Input.GetButton("Fire1"))
+                else
                 {
+                    if (Input.GetButton("Fire1"))
+                    {
+                        speed = speed + .02f;
+                        if (speed > maxspeed)
+                        {
+                            speed = maxspeed;
+                        }
+                    }
+                    if (!Input.GetButton("Fire1"))
+                    {
 
-                    if (speed > .02)
-                    {
-                        speed = speed - .02f;
+                        if (speed > .02)
+                        {
+                            speed = speed - .02f;
+                        }
+                        if (speed >= -.01f && speed <= .02f)
+                        {
+                            speed = 0;
+                        }
+                        if (speed < -.01f)
+                        {
+                            speed = speed + .01f;
+                        }
                     }
-                    if (speed >= -.01f && speed <= .02f)
+                }
+                if (Input.GetAxis("Vertical") < 0)
+                {
+                    speed = speed - .02f;
+                    if (speed < -1f)
                     {
-                        speed = 0;
-                    }
-                    if (speed < -.01f)
-                    {
-                        speed = speed + .01f;
+                        speed = -1f;
                     }
                 }
             }
-            if (Input.GetAxis("Vertical") < 0)
+            if (grounded == false)
             {
-                speed = speed - .02f;
-                if (speed < -1f)
+                if (speed > .01)
                 {
-                    speed = -1f;
+                    speed = speed - .01f;
+                }
+                if (speed > 0 && speed < .01)
+                {
+                    speed = 0;
                 }
             }
         }
-        if (grounded == false)
+        else
         {
-            if (speed > .01)
+            turn = 0;
+            if (speed > .04f)
             {
-                speed = speed - .01f;
+                speed = speed - .04f;
             }
-            if (speed > 0 && speed < .01)
+            if (speed < -.04f)
+            {
+                speed = speed + .04f;
+            }
+            if (speed > -.04f && speed < .04f)
             {
                 speed = 0;
             }
@@ -113,7 +134,7 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(transform.position + transform.forward * speed);
         Quaternion rotate = Quaternion.Euler(0f, turn * 45f * Time.deltaTime, 0f);
         rb.MoveRotation(rb.rotation * rotate);
-        if(Physics.Raycast(transform.position, -Vector3.up, .8f))
+        if(Physics.Raycast(transform.position, -Vector3.up, .5f))
         {
             grounded = true;
         }
@@ -146,6 +167,9 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Boost Item"))
         {
             other.gameObject.SetActive(false);
+            maxspeed = maxspeed * 2;
+            speed = speed * 2;
+            Invoke("ResetSpeed", 2f);
         }
         if (other.gameObject.CompareTag("Checkpoint"))
         {
@@ -153,5 +177,13 @@ public class PlayerController : MonoBehaviour
             rotReset = other.gameObject.transform.rotation;
         }
      //   Debug.Log("Checkpoint");
+    }
+    public void ResetSpeed()
+    {
+        maxspeed = 3;
+    }
+    public void ControlDisable()
+    {
+        controlEnabled = false;
     }
 }

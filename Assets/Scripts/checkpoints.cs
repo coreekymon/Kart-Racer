@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class checkpoints : MonoBehaviour
 {
     public bool[] checkpoint = new bool[11];
     public int playerlap = 1;
+    public PlayerController pc;
+    public Text finish;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,15 @@ public class checkpoints : MonoBehaviour
             checkpoint[1] = false;
             Debug.Log(checkpoint[i]);
         }*/
+    }
+
+    private void Update()
+    {
+        if(playerlap > 3)
+        {
+            pc.ControlDisable();
+            finish.text = "Finish!";
+        }
     }
 
     public void SetCheckpoint(int a)
@@ -42,6 +54,7 @@ public class checkpoints : MonoBehaviour
     }
     public void DebugCheck(int b)
     {
-        Debug.Log(checkpoint[b]);
+        //Debug.Log(checkpoint[b]);
+        return;
     }
 }

@@ -14,6 +14,7 @@ public class sp : MonoBehaviour
             {
                 if (gm.playerlap == 3)
                 {
+                    gm.Nextlap();
                     Debug.Log("Finish!");
                 }
                 if (gm.playerlap < 3)
