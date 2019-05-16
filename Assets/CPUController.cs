@@ -39,6 +39,11 @@ public class CPUController : MonoBehaviour
                 EfficientBehavior();
             }
         }
+        else
+        {
+            NoGas();
+            NoGas();
+        }
     }
 
     private void FixedUpdate()
