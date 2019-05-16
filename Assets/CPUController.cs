@@ -25,6 +25,10 @@ public class CPUController : MonoBehaviour
     void Update()
     {
         Gas();
+        if (CPUgrounded == false)
+        {
+            NoGas();
+        }
     }
 
     private void FixedUpdate()
@@ -62,6 +66,74 @@ public class CPUController : MonoBehaviour
                     CPUspeed = CPUmaxspeed;
                 }
             }
+        }
+    }
+
+    public void NoGas()
+    {
+        if (CPUspeed > .02)
+        {
+            CPUspeed = CPUspeed - .02f;
+        }
+        if (CPUspeed >= -.01f && CPUspeed <= .02f)
+        {
+            CPUspeed = 0;
+        }
+        if (CPUspeed < -.01f)
+        {
+            CPUspeed = CPUspeed + .01f;
+        }
+    }
+
+    public void Reverse()
+    {
+        CPUspeed = CPUspeed - .02f;
+        if (CPUspeed < -1f)
+        {
+            CPUspeed = -1f;
+        }
+    }
+
+    public void ResetSpeed()
+    {
+        CPUmaxspeed = 3;
+    }
+    public void ControlDisable()
+    {
+        CPUcontrolEnabled = false;
+    }
+    public void ResetPosition()
+    {
+        CPUspeed = 0;
+        CPUturn = 0;
+        transform.position = CPUposReset + new Vector3(0, 10, 0);
+        transform.rotation = CPUrotReset;
+    }
+    public void LeftTurn()
+    {
+        CPUturn = -1;
+    }
+    public void RightTurn()
+    {
+        CPUturn = 1;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("roughground"))
+        {
+            CPUroughground = true;
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            CPUspeed = -CPUspeed / 2;
+        }
+
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("roughground"))
+        {
+            CPUroughground = false;
         }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - roughground
   - Boost Item
   - Checkpoint
+  - Waypoint
   layers:
   - Default
   - TransparentFX
