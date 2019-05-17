@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FieldTrack.unity
+    guid: 68893fa528cbe3344b65f9a417e07adc
   m_configObjects: {}

@@ -10,6 +10,7 @@ TagManager:
   - Boost Item
   - Checkpoint
   - Waypoint
+  - CPU
   layers:
   - Default
   - TransparentFX

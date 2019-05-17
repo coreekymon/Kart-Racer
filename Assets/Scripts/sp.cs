@@ -25,5 +25,22 @@ public class sp : MonoBehaviour
                 }
             }
         }
+        if (other.gameObject.CompareTag("CPU"))
+        {
+            if (gm.cpucheckpoint[0] && gm.cpucheckpoint[1] && gm.cpucheckpoint[2] && gm.cpucheckpoint[3] && gm.cpucheckpoint[4] && gm.cpucheckpoint[5] && gm.cpucheckpoint[6] && gm.cpucheckpoint[7] && gm.cpucheckpoint[8] && gm.cpucheckpoint[9] && gm.cpucheckpoint[10])
+            {
+                if (gm.CPUlap == 3)
+                {
+                    gm.CPUNextlap();
+                    Debug.Log("CPU Finish!");
+                }
+                if (gm.CPUlap < 3)
+                {
+                    gm.CPUNextlap();
+                    Debug.Log(gm.CPUlap);
+                    gm.CPUResetCheckpoints();
+                }
+            }
+        }
     }
 }

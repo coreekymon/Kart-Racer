@@ -13,5 +13,10 @@ public class cp1 : MonoBehaviour
             gm.SetCheckpoint(0);
             gm.DebugCheck(0);
         }
+
+        if (other.gameObject.CompareTag("CPU"))
+        {
+            gm.CPUSetCheckpoint(0);
+        }
     }
 }
