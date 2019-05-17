@@ -12,5 +12,9 @@ public class rp : MonoBehaviour
         {
             gm.ResetCheckpoints();
         }
+        if (other.gameObject.CompareTag("CPU"))
+        {
+            gm.CPUResetCheckpoints();
+        }
     }
 }

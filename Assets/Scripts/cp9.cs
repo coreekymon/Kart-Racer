@@ -13,5 +13,9 @@ public class cp9 : MonoBehaviour
             gm.SetCheckpoint(8);
             gm.DebugCheck(8);
         }
+        if (other.gameObject.CompareTag("CPU"))
+        {
+            gm.CPUSetCheckpoint(8);
+        }
     }
 }
