@@ -10,7 +10,7 @@ public class CarFollowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pc.controlEnabled)
+        if (pc.controlEnabled || !pc.racestart)
         {
             transform.position = playerPos.transform.position;
             transform.rotation = new Quaternion(transform.rotation.x, playerPos.transform.rotation.y, transform.rotation.z, playerPos.transform.rotation.w);

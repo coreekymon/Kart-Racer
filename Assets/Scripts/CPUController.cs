@@ -7,12 +7,13 @@ public class CPUController : MonoBehaviour
     public float CPUspeed = 0f;
     public float CPUmaxspeed = 3f;
     private float CPUturn = 0f;
+    public float CPUacceleration = .015f;
     public Rigidbody CPUrb;
     public bool CPUgrounded = false;
     public bool CPUroughground = false;
     public Vector3 CPUposReset;
     public Quaternion CPUrotReset;
-    public bool CPUcontrolEnabled = true;
+    public bool CPUcontrolEnabled = false;
     public bool forward = false;
     public bool slightleft = false;
     public bool slightright = false;
@@ -67,7 +68,7 @@ public class CPUController : MonoBehaviour
         {
             if (CPUroughground)
             {
-                CPUspeed = CPUspeed + .02f;
+                CPUspeed = CPUspeed + CPUacceleration;
                 if (CPUspeed > CPUmaxspeed / 3)
                 {
                     CPUspeed = CPUmaxspeed / 3;
@@ -75,7 +76,7 @@ public class CPUController : MonoBehaviour
             }
             else
             {
-                CPUspeed = CPUspeed + .02f;
+                CPUspeed = CPUspeed + CPUacceleration;
                 if (CPUspeed > CPUmaxspeed)
                 {
                     CPUspeed = CPUmaxspeed;
@@ -102,7 +103,7 @@ public class CPUController : MonoBehaviour
 
     public void Reverse()
     {
-        CPUspeed = CPUspeed - .02f;
+        CPUspeed = CPUspeed - .04f;
         if (CPUspeed < -1f)
         {
             CPUspeed = -1f;
@@ -116,6 +117,10 @@ public class CPUController : MonoBehaviour
     public void ControlDisable()
     {
         CPUcontrolEnabled = false;
+    }
+    public void ControlEnable()
+    {
+        CPUcontrolEnabled = true;
     }
     public void ResetPosition()
     {
@@ -143,6 +148,16 @@ public class CPUController : MonoBehaviour
     public void NoTurn()
     {
         CPUturn = 0f;
+    }
+    public void Boost()
+    {
+        CPUmaxspeed = CPUmaxspeed * 2f;
+        CPUspeed = CPUspeed * 1.5f;
+        if (CPUmaxspeed > 5)
+        {
+            CPUmaxspeed = 5;
+        }
+        Invoke("ResetSpeed", 2f);
     }
 
     public void EfficientBehavior()
@@ -209,4 +224,4 @@ public class CPUController : MonoBehaviour
             CPUroughground = false;
         }
     }
-}
+    }

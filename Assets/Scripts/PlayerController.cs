@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public bool roughground = false;
     public Vector3 posReset;
     public Quaternion rotReset;
-    public bool controlEnabled = true;
+    public bool controlEnabled = false;
+    public float acceleration = .015f;
+    public bool racestart = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +40,9 @@ public class PlayerController : MonoBehaviour
                 turn = Input.GetAxis("Horizontal");
                 if (roughground == true)
                 {
-                    if (Input.GetButton("Fire1"))
+                    if (Input.GetButton("Fire1") && Input.GetAxis("Vertical") >= 0)
                     {
-                        speed = speed + .02f;
+                        speed = speed + acceleration;
                         if (speed > maxspeed / 3)
                         {
                             speed = maxspeed / 3;
@@ -65,9 +67,9 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    if (Input.GetButton("Fire1"))
+                    if (Input.GetButton("Fire1") && Input.GetAxis("Vertical") >= 0)
                     {
-                        speed = speed + .02f;
+                        speed = speed + acceleration;
                         if (speed > maxspeed)
                         {
                             speed = maxspeed;
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if (Input.GetAxis("Vertical") < 0)
                 {
-                    speed = speed - .02f;
+                    speed = speed - .04f;
                     if (speed < -1f)
                     {
                         speed = -1f;
@@ -167,8 +169,12 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Boost Item"))
         {
             other.gameObject.SetActive(false);
-            maxspeed = maxspeed * 2;
-            speed = speed * 2;
+            maxspeed = maxspeed * 2f;
+            speed = speed * 1.5f;
+            if(maxspeed > 5)
+            {
+                maxspeed = 5;
+            }
             Invoke("ResetSpeed", 2f);
         }
         if (other.gameObject.CompareTag("Checkpoint"))
@@ -185,5 +191,10 @@ public class PlayerController : MonoBehaviour
     public void ControlDisable()
     {
         controlEnabled = false;
+    }
+    public void ControlEnable()
+    {
+        controlEnabled = true;
+        racestart = true;
     }
 }
