@@ -93,13 +93,25 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-                if (Input.GetAxis("Vertical") < 0)
+                if (Input.GetAxis("Vertical") < 0 && speed > 0)
                 {
                     speed = speed - .04f;
                     if (speed < -1f)
                     {
                         speed = -1f;
                     }
+                }
+                if (Input.GetAxis("Vertical") < 0 && speed < 0)
+                {
+                    speed = speed - .02f;
+                    if (speed < -1f)
+                    {
+                        speed = -1f;
+                    }
+                }
+                if(Input.GetButton("Fire1") && speed < 0 && Input.GetAxis("Vertical") >= 0)
+                {
+                    speed = speed + .04f;
                 }
             }
             if (grounded == false)
