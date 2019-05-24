@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         posReset = transform.position;
         rotReset = transform.rotation;
+        rb.centerOfMass = new Vector3(0, -.6f, 0);
     }
 
     // Update is called once per frame
@@ -143,6 +144,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             grounded = false;
+        }
+        if (!grounded)
+        {
+            rb.AddForce(-Vector3.up*25);
         }
     }
     private void OnCollisionEnter(Collision collision)
