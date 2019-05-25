@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
                         speed = -1f;
                     }
                 }
-                if (Input.GetAxis("Vertical") < 0 && speed < 0)
+                if (Input.GetAxis("Vertical") < 0 && speed <= 0)
                 {
                     speed = speed - .02f;
                     if (speed < -1f)
