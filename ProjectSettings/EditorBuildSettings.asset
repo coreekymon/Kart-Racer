@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SnowyMountainTrack.unity
     guid: 8277a988c7099f442bd24dc1a7211b5c
   - enabled: 1
-    path: Assets/Scenes/UnderwaterTrack.unity
+    path: Assets/Scenes/DesertTrack.unity
     guid: 7da00d19c54caf34ca122852cc6ee0aa
   m_configObjects: {}
