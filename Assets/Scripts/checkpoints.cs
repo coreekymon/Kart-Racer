@@ -34,6 +34,18 @@ public class checkpoints : MonoBehaviour
         {
             cpnumber = 24;
         }
+        if(SceneName == "SnowyMountainTrack")
+        {
+            cpnumber = 1;
+        }
+        if (SceneName == "DesertTrack")
+        {
+            cpnumber = 1;
+        }
+        if (SceneName == "MoonTrack")
+        {
+            cpnumber = 1;
+        }
         checkpoint = new bool[cpnumber];
         cpucheckpoint = new bool[cpnumber];
     }
