@@ -5,12 +5,21 @@ using UnityEngine;
 public class sp : MonoBehaviour
 {
     public checkpoints gm;
+    public int cp = 0;
+    public int cpucp = 0;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if(gm.checkpoint[0] && gm.checkpoint[1] && gm.checkpoint[2] && gm.checkpoint[3] && gm.checkpoint[4] && gm.checkpoint[5] && gm.checkpoint[6] && gm.checkpoint[7] && gm.checkpoint[8] && gm.checkpoint[9] && gm.checkpoint[10])
+            for(int a = 0; a < gm.cpnumber; a++)
+            {
+                if (gm.checkpoint[a])
+                {
+                    cp = cp + 1;
+                }
+            }
+            if(cp == gm.cpnumber)
             {
                 if (gm.playerlap == 3)
                 {
@@ -22,12 +31,21 @@ public class sp : MonoBehaviour
                     gm.Nextlap();
                     Debug.Log(gm.playerlap);
                     gm.ResetCheckpoints();
+                    cp = 0;
                 }
+
             }
         }
         if (other.gameObject.CompareTag("CPU"))
         {
-            if (gm.cpucheckpoint[0] && gm.cpucheckpoint[1] && gm.cpucheckpoint[2] && gm.cpucheckpoint[3] && gm.cpucheckpoint[4] && gm.cpucheckpoint[5] && gm.cpucheckpoint[6] && gm.cpucheckpoint[7] && gm.cpucheckpoint[8] && gm.cpucheckpoint[9] && gm.cpucheckpoint[10])
+            for (int b = 0; b < gm.cpnumber; b++)
+            {
+                if (gm.cpucheckpoint[b])
+                {
+                    cpucp = cpucp + 1;
+                }
+            }
+            if (cpucp == gm.cpnumber)
             {
                 if (gm.CPUlap == 3)
                 {
@@ -39,6 +57,7 @@ public class sp : MonoBehaviour
                     gm.CPUNextlap();
                     Debug.Log(gm.CPUlap);
                     gm.CPUResetCheckpoints();
+                    cpucp = 0;
                 }
             }
         }

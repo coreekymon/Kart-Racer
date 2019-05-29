@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class checkpoints : MonoBehaviour
 {
-    public bool[] checkpoint = new bool[11];
-    public bool[] cpucheckpoint = new bool[11];
+    public bool[] checkpoint;
+    public bool[] cpucheckpoint;
     public int playerlap = 1;
     public int CPUlap = 1;
     public PlayerController pc;
@@ -19,18 +20,34 @@ public class checkpoints : MonoBehaviour
     public Text place;
     public GameObject trackselect;
     public GameObject retry;
+    public int cpnumber = 0;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Scene CurrentScene = SceneManager.GetActiveScene();
+        string SceneName = CurrentScene.name;
+        if(SceneName == "FieldTrack")
+        {
+            cpnumber = 11;
+        }
+        if(SceneName == "CityTrack")
+        {
+            cpnumber = 24;
+        }
+        checkpoint = new bool[cpnumber];
+        cpucheckpoint = new bool[cpnumber];
+    }
     void Start()
     {
         int i = 0;
-        while (i < 11)
+        while (i < cpnumber)
         {
             checkpoint[i] = false;
             //Debug.Log(checkpoint[i]);
             i = i + 1;
         }
         int j = 0;
-        while (j < 11)
+        while (j < cpnumber)
         {
             cpucheckpoint[j] = false;
             
@@ -56,7 +73,7 @@ public class checkpoints : MonoBehaviour
             trackselect.SetActive(true);
             retry.SetActive(true);
         }
-        for (int k = 0; k < 11; k++)
+        for (int k = 0; k < cpnumber; k++)
         {
             if (checkpoint[k])
             {
@@ -113,7 +130,7 @@ public class checkpoints : MonoBehaviour
     }
     public void ResetCheckpoints()
     {
-        for (int i = 0; i < 11; i++)
+        for (int i = 0; i < cpnumber; i++)
         {
             checkpoint[i] = false;
             //Debug.Log(checkpoint[i]);
@@ -131,7 +148,7 @@ public class checkpoints : MonoBehaviour
     }
     public void CPUResetCheckpoints()
     {
-        for (int i = 0; i < 11; i++)
+        for (int i = 0; i < cpnumber; i++)
         {
             cpucheckpoint[i] = false;
             //Debug.Log(checkpoint[i]);
@@ -140,7 +157,8 @@ public class checkpoints : MonoBehaviour
 
     public void DebugCheck(int b)
     {
-        //Debug.Log(checkpoint[b]);
+        Debug.Log(b);
+        Debug.Log(checkpoint[b]);
         return;
     }
     public void Clear()

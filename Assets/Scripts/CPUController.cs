@@ -28,6 +28,7 @@ public class CPUController : MonoBehaviour
         CPUrb = GetComponent<Rigidbody>();
         CPUposReset = transform.position;
         CPUrotReset = transform.rotation;
+        CPUrb.centerOfMass = new Vector3(0, -.6f, 0);
     }
 
     // Update is called once per frame
@@ -38,6 +39,10 @@ public class CPUController : MonoBehaviour
             if(behaviortype == 0)
             {
                 EfficientBehavior();
+            }
+            if(behaviortype == 1)
+            {
+                SharpTurnBehavior();
             }
         }
         else
@@ -59,6 +64,10 @@ public class CPUController : MonoBehaviour
         else
         {
             CPUgrounded = false;
+        }
+        if (!CPUgrounded)
+        {
+            CPUrb.AddForce(-Vector3.up * 25);
         }
     }
 
@@ -149,6 +158,17 @@ public class CPUController : MonoBehaviour
     {
         CPUturn = 0f;
     }
+    public void Brake()
+    {
+        if(CPUspeed > 0)
+        {
+            CPUspeed = CPUspeed - .04f;
+            if (CPUspeed < .5f)
+            {
+                CPUspeed = .5f;
+            }
+        }
+    }
     public void Boost()
     {
         CPUmaxspeed = CPUmaxspeed * 2f;
@@ -205,7 +225,52 @@ public class CPUController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void SharpTurnBehavior()
+    {
+        if (!CPUgrounded)
+        {
+            NoGas();
+        }
+        else
+        {
+            if (forward)
+            {
+                NoTurn();
+                Gas();
+            }
+            if (slightleft)
+            {
+                SlightLeftTurn();
+                Gas();
+            }
+            if (slightright)
+            {
+                SlightRightTurn();
+                Gas();
+            }
+            if (reverse)
+            {
+                NoTurn();
+                Reverse();
+            }
+            if (hardleft)
+            {
+                HardLeftTurn();
+                Brake();
+            }
+            if (hardright)
+            {
+                HardRightTurn();
+                Brake();
+            }
+            if (!forward && !reverse && !slightleft && !slightright && !hardleft && !hardright)
+            {
+                NoGas();
+            }
+        }
+    }
+
+        private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("roughground"))
         {
