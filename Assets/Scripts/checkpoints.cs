@@ -41,7 +41,7 @@ public class checkpoints : MonoBehaviour
         }
         if (SceneName == "DesertTrack")
         {
-            cpnumber = 1;
+            cpnumber = 29;
         }
         if (SceneName == "MoonTrack")
         {

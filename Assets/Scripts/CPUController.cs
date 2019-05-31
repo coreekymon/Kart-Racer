@@ -52,9 +52,10 @@ public class CPUController : MonoBehaviour
             NoGas();
             NoGas();
         }
-        if(resetcounter > 15)
+        if(resetcounter > 20)
         {
             ResetPosition();
+            resetcounter = 0;
         }
     }
 
@@ -130,7 +131,7 @@ public class CPUController : MonoBehaviour
     }
     public void ResetSpeed()
     {
-        CPUmaxspeed = 3;
+        CPUmaxspeed = 2.5f;
     }
     public void ControlDisable()
     {

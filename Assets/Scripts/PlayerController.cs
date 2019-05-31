@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public bool controlEnabled = false;
     public float acceleration = .015f;
     public bool racestart = false;
+    public int helditem = 0;
+    public Text item;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,10 @@ public class PlayerController : MonoBehaviour
     {
         if (controlEnabled)
         {
+            if (Input.GetButtonDown("Fire3"))
+            {
+                Useitem();
+            }
             if (Input.GetButtonDown("Fire2"))
             {
                 speed = 0;
@@ -186,13 +193,8 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Boost Item"))
         {
             other.gameObject.SetActive(false);
-            maxspeed = maxspeed * 2f;
-            speed = speed * 1.5f;
-            if(maxspeed > 5)
-            {
-                maxspeed = 5;
-            }
-            Invoke("ResetSpeed", 2f);
+            helditem = 1;
+            item.text = "Item: Speed";
         }
         if (other.gameObject.CompareTag("Checkpoint"))
         {
@@ -201,9 +203,28 @@ public class PlayerController : MonoBehaviour
         }
      //   Debug.Log("Checkpoint");
     }
+    public void Useitem()
+    {
+        if(helditem == 0)
+        {
+            return;
+        }
+        if(helditem == 1)
+        {
+            maxspeed = maxspeed * 2f;
+            speed = speed * 1.5f;
+            if (maxspeed > 5)
+            {
+                maxspeed = 5;
+            }
+            Invoke("ResetSpeed", 2f);
+            helditem = 0;
+            item.text = "Item: None";
+        }
+    }
     public void ResetSpeed()
     {
-        maxspeed = 3;
+        maxspeed = 2.5f;
     }
     public void ControlDisable()
     {
