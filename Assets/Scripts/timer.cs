@@ -54,7 +54,7 @@ public class timer : MonoBehaviour
                 lapOne.text = "Lap 1: " + lapOneMinutes + ":" + lapOneSeconds + ":" + lapOneMilliseconds;
             }
         }
-        if (gm.playerlap == 2)
+        if (gm.playerlap == 2 && gm.SceneName != "SnowyMountainTrack")
         {
             if (rawTime >= 1)
             {
@@ -81,7 +81,7 @@ public class timer : MonoBehaviour
                 lapTwo.text = "Lap 2: " + lapTwoMinutes + ":" + lapTwoSeconds + ":" + lapTwoMilliseconds;
             }
         }
-        if (gm.playerlap == 3)
+        if (gm.playerlap == 3 && gm.SceneName != "SnowyMountainTrack")
         {
             if (rawTime >= 1)
             {
@@ -108,7 +108,7 @@ public class timer : MonoBehaviour
                 lapThree.text = "Lap 3: " + lapThreeMinutes + ":" + lapThreeSeconds + ":" + lapThreeMilliseconds;
             }
         }
-        if(gm.playerlap > 3)
+        if(gm.playerlap > 3 || gm.SceneName == "SnowyMountainTrack" && gm.playerlap > 1)
         {
             finalMilliseconds = lapOneMilliseconds + lapTwoMilliseconds + lapThreeMilliseconds;
             finalSeconds = lapOneSeconds + lapTwoSeconds + lapThreeSeconds;

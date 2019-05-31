@@ -21,11 +21,12 @@ public class checkpoints : MonoBehaviour
     public GameObject trackselect;
     public GameObject retry;
     public int cpnumber = 0;
+    public string SceneName;
     // Start is called before the first frame update
     private void Awake()
     {
         Scene CurrentScene = SceneManager.GetActiveScene();
-        string SceneName = CurrentScene.name;
+        SceneName = CurrentScene.name;
         if(SceneName == "FieldTrack")
         {
             cpnumber = 11;
@@ -36,7 +37,7 @@ public class checkpoints : MonoBehaviour
         }
         if(SceneName == "SnowyMountainTrack")
         {
-            cpnumber = 1;
+            cpnumber = 29;
         }
         if (SceneName == "DesertTrack")
         {
@@ -69,6 +70,25 @@ public class checkpoints : MonoBehaviour
 
     private void Update()
     {
+        if(SceneName == "SnowyMountainTrack")
+        {
+            if (playerlap > 1)
+            {
+                pc.ControlDisable();
+                cpu.ControlDisable();
+                finish.text = "Finish!\nYou Win!";
+                trackselect.SetActive(true);
+                retry.SetActive(true);
+            }
+            if (CPUlap > 1)
+            {
+                pc.ControlDisable();
+                cpu.ControlDisable();
+                finish.text = "Finish\nYou Lose";
+                trackselect.SetActive(true);
+                retry.SetActive(true);
+            }
+        }
         if(playerlap > 3)
         {
             pc.ControlDisable();
@@ -134,7 +154,7 @@ public class checkpoints : MonoBehaviour
     public void Nextlap()
     {
         playerlap = playerlap + 1;
-        if (playerlap < 4)
+        if (playerlap < 4 && SceneName != "SnowyMountainTrack")
         {
             notify.text = "Lap " + playerlap + "/3";
             Invoke("Clear", 1f);

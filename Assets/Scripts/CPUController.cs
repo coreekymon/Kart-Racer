@@ -21,6 +21,7 @@ public class CPUController : MonoBehaviour
     public bool hardright = false;
     public bool reverse = false;
     public int behaviortype = 0;
+    public float resetcounter = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class CPUController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        resetcounter = resetcounter + Time.deltaTime;
         if (CPUcontrolEnabled)
         {
             if(behaviortype == 0)
@@ -49,6 +51,10 @@ public class CPUController : MonoBehaviour
         {
             NoGas();
             NoGas();
+        }
+        if(resetcounter > 15)
+        {
+            ResetPosition();
         }
     }
 
@@ -67,7 +73,7 @@ public class CPUController : MonoBehaviour
         }
         if (!CPUgrounded)
         {
-            CPUrb.AddForce(-Vector3.up * 25);
+            CPUrb.AddForce(-Vector3.up * 50);
         }
     }
 
@@ -118,7 +124,10 @@ public class CPUController : MonoBehaviour
             CPUspeed = -1f;
         }
     }
-
+    public void ResetTimer()
+    {
+        resetcounter = 0;
+    }
     public void ResetSpeed()
     {
         CPUmaxspeed = 3;
