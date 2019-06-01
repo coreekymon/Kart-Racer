@@ -20,6 +20,7 @@ public class CPUController : MonoBehaviour
     public bool hardleft = false;
     public bool hardright = false;
     public bool reverse = false;
+    public bool reverseleft = false;
     public int behaviortype = 0;
     public float resetcounter = 0f;
 
@@ -120,9 +121,9 @@ public class CPUController : MonoBehaviour
     public void Reverse()
     {
         CPUspeed = CPUspeed - .04f;
-        if (CPUspeed < -1f)
+        if (CPUspeed < -.3f)
         {
-            CPUspeed = -1f;
+            CPUspeed = -.3f;
         }
     }
     public void ResetTimer()
@@ -150,11 +151,11 @@ public class CPUController : MonoBehaviour
     }
     public void HardLeftTurn()
     {
-        CPUturn = -1;
+        CPUturn = -1.5f;
     }
     public void HardRightTurn()
     {
-        CPUturn = 1;
+        CPUturn = 1.5f;
     }
     public void SlightLeftTurn()
     {
@@ -215,7 +216,12 @@ public class CPUController : MonoBehaviour
             }
             if (reverse)
             {
-                NoTurn();
+                SlightRightTurn();
+                Reverse();
+            }
+            if (reverseleft)
+            {
+                SlightLeftTurn();
                 Reverse();
             }
             if (hardleft)
@@ -293,6 +299,10 @@ public class CPUController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ramp"))
         {
             CPUspeed = 2.5f;
+        }
+        if (collision.gameObject.CompareTag("Crash"))
+        {
+            CPUrb.MovePosition(transform.position - transform.forward * 10 * CPUspeed);
         }
     }
     private void OnCollisionExit(Collision collision)

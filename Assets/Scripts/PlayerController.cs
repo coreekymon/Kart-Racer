@@ -179,7 +179,10 @@ public class PlayerController : MonoBehaviour
         {
             speed = -speed/2;
         }
-      
+        if (collision.gameObject.CompareTag("Crash"))
+        {
+            rb.MovePosition(transform.position - transform.forward * 10 * speed);
+        }
     }
     private void OnCollisionExit(Collision collision)
     {

@@ -12,6 +12,7 @@ TagManager:
   - Waypoint
   - CPU
   - Ramp
+  - Crash
   layers:
   - Default
   - TransparentFX
