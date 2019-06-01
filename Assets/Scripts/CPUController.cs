@@ -74,7 +74,7 @@ public class CPUController : MonoBehaviour
         }
         if (!CPUgrounded)
         {
-            CPUrb.AddForce(-Vector3.up * 50);
+            CPUrb.AddForce(-Vector3.up * 100);
         }
     }
 
@@ -290,7 +290,10 @@ public class CPUController : MonoBehaviour
         {
             CPUspeed = -CPUspeed / 2;
         }
-
+        if (collision.gameObject.CompareTag("Ramp"))
+        {
+            CPUspeed = 2.5f;
+        }
     }
     private void OnCollisionExit(Collision collision)
     {

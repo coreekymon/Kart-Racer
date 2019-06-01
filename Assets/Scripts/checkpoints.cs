@@ -45,7 +45,7 @@ public class checkpoints : MonoBehaviour
         }
         if (SceneName == "MoonTrack")
         {
-            cpnumber = 1;
+            cpnumber = 57;
         }
         checkpoint = new bool[cpnumber];
         cpucheckpoint = new bool[cpnumber];
