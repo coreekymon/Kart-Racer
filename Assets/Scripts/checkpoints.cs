@@ -33,7 +33,7 @@ public class checkpoints : MonoBehaviour
         }
         if(SceneName == "CityTrack")
         {
-            cpnumber = 24;
+            cpnumber = 25;
         }
         if(SceneName == "SnowyMountainTrack")
         {

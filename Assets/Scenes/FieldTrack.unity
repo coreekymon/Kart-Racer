@@ -1795,6 +1795,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
+        type: 3}
+      propertyPath: cpu
+      value: 
+      objectReference: {fileID: 1303128812}
     - target: {fileID: 5236852796473830442, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -1835,11 +1840,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
-        type: 3}
-      propertyPath: cpu
-      value: 
-      objectReference: {fileID: 1303128812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1d6650f2b69945ad4d1bd39c166c5, type: 3}
 --- !u!4 &578729618 stripped
@@ -4359,6 +4359,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
+        type: 3}
+      propertyPath: cpu
+      value: 
+      objectReference: {fileID: 1303128812}
     - target: {fileID: 5236852796473830442, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -4399,11 +4404,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
-        type: 3}
-      propertyPath: cpu
-      value: 
-      objectReference: {fileID: 1303128812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1d6650f2b69945ad4d1bd39c166c5, type: 3}
 --- !u!4 &1040876837 stripped
@@ -5826,6 +5826,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
+        type: 3}
+      propertyPath: cpu
+      value: 
+      objectReference: {fileID: 1303128812}
     - target: {fileID: 5236852796473830442, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -5866,11 +5871,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
-        type: 3}
-      propertyPath: cpu
-      value: 
-      objectReference: {fileID: 1303128812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1d6650f2b69945ad4d1bd39c166c5, type: 3}
 --- !u!4 &1409375989 stripped
@@ -6688,6 +6688,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
+        type: 3}
+      propertyPath: cpu
+      value: 
+      objectReference: {fileID: 1303128812}
     - target: {fileID: 5236852796473830442, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -6728,11 +6733,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
-        type: 3}
-      propertyPath: cpu
-      value: 
-      objectReference: {fileID: 1303128812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1d6650f2b69945ad4d1bd39c166c5, type: 3}
 --- !u!4 &1587405625 stripped
@@ -8296,6 +8296,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
+        type: 3}
+      propertyPath: cpu
+      value: 
+      objectReference: {fileID: 1303128812}
     - target: {fileID: 5236852796473830442, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -8336,11 +8341,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
-        type: 3}
-      propertyPath: cpu
-      value: 
-      objectReference: {fileID: 1303128812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1d6650f2b69945ad4d1bd39c166c5, type: 3}
 --- !u!4 &2067955546 stripped
@@ -8720,32 +8720,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2681306799144750112, guid: 6544ad9bf7e02f0409196f6f9e97688b,
-        type: 3}
-      propertyPath: m_Mass
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6544ad9bf7e02f0409196f6f9e97688b, type: 3}
---- !u!1 &2681306798282041034 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2681306799549556844, guid: 6544ad9bf7e02f0409196f6f9e97688b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2681306798282041033}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2681306798282041035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681306798282041034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c384e7be913f8b4b978da25437512a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cpu: {fileID: 1303128812}
 --- !u!1001 &2729050208449603628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9579,6 +9555,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
+        type: 3}
+      propertyPath: cpu
+      value: 
+      objectReference: {fileID: 1303128812}
     - target: {fileID: 5236852796473830442, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -9619,11 +9600,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5236852796473830455, guid: e1a1d6650f2b69945ad4d1bd39c166c5,
-        type: 3}
-      propertyPath: cpu
-      value: 
-      objectReference: {fileID: 1303128812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1d6650f2b69945ad4d1bd39c166c5, type: 3}
 --- !u!4 &5236852796473830440 stripped

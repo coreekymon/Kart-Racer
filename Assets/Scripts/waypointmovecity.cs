@@ -29,6 +29,7 @@ public class waypointmovecity : MonoBehaviour
     public GameObject cp23;
     public GameObject cp24;
     public GameObject cp25;
+    public GameObject cp26;
     public checkpoints gm;
 
     // Update is called once per frame
@@ -83,7 +84,14 @@ public class waypointmovecity : MonoBehaviour
                                                                                                 {
                                                                                                     if (gm.cpucheckpoint[23])
                                                                                                     {
-                                                                                                        transform.position = cp25.gameObject.transform.position;
+                                                                                                        if (gm.cpucheckpoint[24])
+                                                                                                        {
+                                                                                                            transform.position = cp26.gameObject.transform.position;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            transform.position = cp25.gameObject.transform.position;
+                                                                                                        }
                                                                                                     }
                                                                                                     else
                                                                                                     {
