@@ -26,4 +26,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HowToPlay.unity
     guid: 3bc9e4b9409ba7d40838e89757d487b8
+  - enabled: 1
+    path: Assets/Scenes/FieldTrackMenu.unity
+    guid: 76aa400389bafc34fa3509ccefef74ff
+  - enabled: 1
+    path: Assets/Scenes/Items.unity
+    guid: 2077c7ae1ea6ae942857ac41079d2660
+  - enabled: 1
+    path: Assets/Scenes/SnowyMountainTrackMenu.unity
+    guid: c55f13d44dfe48d47bed787a48e309e3
+  - enabled: 1
+    path: Assets/Scenes/DesertTrackMenu.unity
+    guid: 25edc07cfd718aa4c8b27e0bb6f6ac54
+  - enabled: 1
+    path: Assets/Scenes/MoonTrackMenu.unity
+    guid: 92db7e00d31d51e46b5d236f44a1944e
+  - enabled: 1
+    path: Assets/Scenes/CityTrackMenu.unity
+    guid: a8367993cfd2c6b4ba2c3357ba72a1ee
   m_configObjects: {}
