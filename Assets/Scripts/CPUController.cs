@@ -302,6 +302,11 @@ public class CPUController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Crash"))
         {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if(player.giant == true)
+            {
+                ResetPosition();
+            }
             CPUspeed = 0;
         }
         if (collision.gameObject.CompareTag("laser"))
