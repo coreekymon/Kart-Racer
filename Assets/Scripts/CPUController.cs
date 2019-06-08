@@ -302,7 +302,11 @@ public class CPUController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Crash"))
         {
-            CPUrb.MovePosition(transform.position - transform.forward * 10 * CPUspeed);
+            CPUspeed = 0;
+        }
+        if (collision.gameObject.CompareTag("laser"))
+        {
+            ResetPosition();
         }
     }
     private void OnCollisionExit(Collision collision)

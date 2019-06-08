@@ -17,7 +17,14 @@ public class PlayerController : MonoBehaviour
     public float acceleration = .015f;
     public bool racestart = false;
     public int helditem = 0;
+    public bool giant = false;
+    public bool ATV = false;
     public Text item;
+    public Rigidbody laser;
+    public Transform laserspawn;
+    public int lasercount = 0;
+    public Rigidbody mine;
+    public Transform minespawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,15 +45,12 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetButtonDown("Fire2"))
             {
-                speed = 0;
-                turn = 0;
-                transform.position = posReset + new Vector3(0, 10, 0);
-                transform.rotation = rotReset;
+                ResetPosition();
             }
             if (grounded == true)
             {
                 turn = Input.GetAxis("Horizontal");
-                if (roughground == true)
+                if (roughground == true && ATV == false)
                 {
                     if (Input.GetButton("Fire1") && Input.GetAxis("Vertical") >= 0)
                     {
@@ -181,7 +185,18 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Crash"))
         {
-            rb.MovePosition(transform.position - transform.forward * 10 * speed);
+            if (giant == false)
+            {
+                speed = -speed / 2;
+            }
+            if (giant == true)
+            {
+                speed = speed + .5f;
+            }
+        }
+        if (collision.gameObject.CompareTag("laser"))
+        {
+            ResetPosition();
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -196,8 +211,28 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Boost Item"))
         {
             other.gameObject.SetActive(false);
-            helditem = 1;
-            item.text = "Item: Speed";
+            helditem = Random.Range(1, 6);
+            if (helditem == 1)
+            {
+                item.text = "Item: Speed";
+            }
+            if (helditem == 2)
+            {
+                item.text = "Item: Giant";
+            }
+            if (helditem == 3)
+            {
+                item.text = "Item: ATV";
+            }
+            if (helditem == 4)
+            {
+                lasercount = 5;
+                item.text = "Item: Laser";
+            }
+            if(helditem == 5)
+            {
+                item.text = "Item: Mine";
+            }
         }
         if (other.gameObject.CompareTag("Checkpoint"))
         {
@@ -224,10 +259,64 @@ public class PlayerController : MonoBehaviour
             helditem = 0;
             item.text = "Item: None";
         }
+        if(helditem == 2 && giant == false)
+        {
+            giant = true;
+            maxspeed = maxspeed * 1.5f;
+            rb.MovePosition(Vector3.up);
+            transform.localScale = transform.localScale * 2;
+            if (maxspeed > 5)
+            {
+                maxspeed = 5;
+            }
+            Invoke("ResetSpeed", 6f);
+            Invoke("ResetScale", 6f);
+            helditem = 0;
+            item.text = "Item: None";
+        }
+        if (helditem == 3)
+        {
+            ATV = true;
+            Invoke("ResetATV", 10f);
+            helditem = 0;
+            item.text = "Item: None";
+        }
+        if (helditem == 4)
+        {
+            Instantiate(laser, laserspawn.position, laserspawn.rotation);
+            lasercount = lasercount - 1;
+            if (lasercount == 0)
+            {
+                helditem = 0;
+                item.text = "Item: None";
+            }
+        }
+        if (helditem == 5)
+        {
+            Instantiate(mine, minespawn.position, minespawn.rotation);
+            helditem = 0;
+            item.text = "Item: None";
+        }
+    }
+    public void ResetPosition()
+    {
+        speed = 0;
+        turn = 0;
+        transform.position = posReset + new Vector3(0, 10, 0);
+        transform.rotation = rotReset;
     }
     public void ResetSpeed()
     {
         maxspeed = 2.5f;
+    }
+    public void ResetScale()
+    {
+        transform.localScale = new Vector3(1,1,1);
+        giant = false;
+    }
+    public void ResetATV()
+    {
+        ATV = false;
     }
     public void ControlDisable()
     {

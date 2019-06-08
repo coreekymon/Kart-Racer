@@ -13,6 +13,7 @@ TagManager:
   - CPU
   - Ramp
   - Crash
+  - laser
   layers:
   - Default
   - TransparentFX
