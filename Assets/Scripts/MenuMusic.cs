@@ -22,7 +22,7 @@ public class MenuMusic : MonoBehaviour
     {
         Scene CurrentScene = SceneManager.GetActiveScene();
         SceneName = CurrentScene.name;
-        if(SceneName == "FieldTrack" || SceneName == "MoonTrack" || SceneName == "SnowyMountainTrack" || SceneName == "DesertTrack:" || SceneName == "CityTrack")
+        if(SceneName == "FieldTrack" || SceneName == "MoonTrack" || SceneName == "SnowyMountainTrack" || SceneName == "DesertTrack" || SceneName == "CityTrack")
         {
             Destroy(this.gameObject);
         }
