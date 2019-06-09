@@ -15,6 +15,7 @@ TagManager:
   - Crash
   - laser
   - music
+  - savedata
   layers:
   - Default
   - TransparentFX
