@@ -1120,6 +1120,14 @@ MonoBehaviour:
   mountainseconds: 0
   mountainmseconds: 0
   desertminutes: 7
+  desertseconds: 0
+  desertmseconds: 0
+  moonminutes: 7
+  moonseconds: 0
+  moonmseconds: 0
+  cityminutes: 10
+  cityseconds: 0
+  citymseconds: 0
 --- !u!4 &785181493
 Transform:
   m_ObjectHideFlags: 0
