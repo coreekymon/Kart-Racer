@@ -15,14 +15,15 @@ public class timer : MonoBehaviour
     float lapThreeMilliseconds = 0f;
     int lapThreeSeconds = 0;
     int lapThreeMinutes = 0;
-    float finalMilliseconds = 0f;
-    int finalSeconds = 0;
-    int finalMinutes = 0;
+    public float finalMilliseconds = 0f;
+    public int finalSeconds = 0;
+    public int finalMinutes = 0;
     public Text lapOne;
     public Text lapTwo;
     public Text lapThree;
     public Text finalTime;
     public checkpoints gm;
+    public bool raceend = false;
 
     // Update is called once per frame
     void Update()
@@ -110,6 +111,7 @@ public class timer : MonoBehaviour
         }
         if(gm.playerlap > 3 || gm.SceneName == "SnowyMountainTrack" && gm.playerlap > 1)
         {
+            raceend = true;
             finalMilliseconds = lapOneMilliseconds + lapTwoMilliseconds + lapThreeMilliseconds;
             finalSeconds = lapOneSeconds + lapTwoSeconds + lapThreeSeconds;
             finalMinutes = lapOneMinutes + lapTwoMinutes + lapThreeMinutes;
