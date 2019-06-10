@@ -25,10 +25,19 @@ public class PlayerController : MonoBehaviour
     public int lasercount = 0;
     public Rigidbody mine;
     public Transform minespawn;
+    public AudioSource source;
+    public AudioSource sfx;
+    public float lerpvalue = 0f;
+    public AudioClip lasersfx;
+    public AudioClip minesfx;
+    public AudioClip crash;
+    public AudioClip getitem;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        source = GetComponent<AudioSource>();
         posReset = transform.position;
         rotReset = transform.rotation;
         rb.centerOfMass = new Vector3(0, -.6f, 0);
@@ -37,6 +46,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(source != null)
+        {
+            lerpvalue = Mathf.Abs(speed / 3);
+            if(lerpvalue > 1)
+            {
+                lerpvalue = 1;
+            }
+            source.pitch = Mathf.Lerp(.3f, 2f, lerpvalue);
+        }
         if (controlEnabled)
         {
             if (Input.GetButtonDown("Fire3"))
@@ -181,10 +199,12 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
+            sfx.PlayOneShot(crash, .7f);
             speed = -speed/2;
         }
         if (collision.gameObject.CompareTag("Crash"))
         {
+            sfx.PlayOneShot(crash, .7f);
             if (giant == false)
             {
                 speed = -speed / 2;
@@ -210,6 +230,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Boost Item"))
         {
+            sfx.PlayOneShot(getitem, .7f);
             other.gameObject.SetActive(false);
             helditem = Random.Range(1, 6);
             if (helditem == 1)
@@ -284,6 +305,7 @@ public class PlayerController : MonoBehaviour
         if (helditem == 4)
         {
             Instantiate(laser, laserspawn.position, laserspawn.rotation);
+            sfx.PlayOneShot(lasersfx, .7f);
             lasercount = lasercount - 1;
             if (lasercount == 0)
             {
@@ -294,6 +316,7 @@ public class PlayerController : MonoBehaviour
         if (helditem == 5)
         {
             Instantiate(mine, minespawn.position, minespawn.rotation);
+            sfx.PlayOneShot(minesfx, .7f);
             helditem = 0;
             item.text = "Item: None";
         }
