@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.105882354, g: 0.11372549, b: 0.12941177, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 5072c671f5d9f4003a83241b424bb0f0, type: 2}
   m_HaloStrength: 0.5
@@ -11730,6 +11730,13 @@ MonoBehaviour:
   lasercount: 0
   mine: {fileID: 2673578696576908819, guid: ea2adc0ccba57204d8f546a0eff8a4fd, type: 3}
   minespawn: {fileID: 920926595}
+  source: {fileID: 0}
+  sfx: {fileID: 0}
+  lerpvalue: 0
+  lasersfx: {fileID: 0}
+  minesfx: {fileID: 0}
+  crash: {fileID: 0}
+  getitem: {fileID: 0}
 --- !u!65 &8813333482074955677
 BoxCollider:
   m_ObjectHideFlags: 0
