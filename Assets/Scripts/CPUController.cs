@@ -309,7 +309,7 @@ public class CPUController : MonoBehaviour
             }
             CPUspeed = 0;
         }
-        if (collision.gameObject.CompareTag("laser"))
+        if (collision.gameObject.CompareTag("laser") || collision.gameObject.CompareTag("Mine"))
         {
             ResetPosition();
         }

@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour
                 speed = speed + .5f;
             }
         }
-        if (collision.gameObject.CompareTag("laser"))
+        if (collision.gameObject.CompareTag("Mine"))
         {
             ResetPosition();
         }
